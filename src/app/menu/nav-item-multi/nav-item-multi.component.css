@@ -1,0 +1,7 @@
+.nav-item:hover .nav-subitem-list {
+    display: block;
+}
+
+.nav-subitem-list {
+    display: none;
+}
