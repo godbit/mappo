@@ -62,10 +62,14 @@ export class MapService {
   /**
    * Takes a number between 0 and 100 and sets the opacity of the layer accoringly
    */
-  setBasemapTransparency(opacity: number) {
+  setBasemapOpacity(opacity: number) {
     // OL takes opacitiy 0 <= o <= 1
     let o = opacity/100;
     this.currentBasemap[0].setOpacity(o);
+  }
+
+  getCurrentBasemapOpacity() {
+    return this.currentBasemap[0].getOpacity() * 100;
   }
 
 }

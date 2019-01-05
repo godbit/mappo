@@ -7,7 +7,7 @@ import { MapService } from 'src/app/map/map.service';
   styleUrls: ['./map-settings.component.css']
 })
 export class MapSettingsComponent implements OnInit {
-  layerTransparency: number = 100;
+  basemapOpacity: number = 100;
   basemapNames: string [];
   currentBasemapName: string;
 
@@ -21,11 +21,12 @@ export class MapSettingsComponent implements OnInit {
 
   changeBasemap(event) {
     this.mapService.setBasemapByName(event.value);
+    this.basemapOpacity = this.mapService.getCurrentBasemapOpacity();
   }
 
   updateTransparency(event) {
-    this.layerTransparency = event.value;
-    this.mapService.setBasemapTransparency(this.layerTransparency);
+    this.basemapOpacity = event.value;
+    this.mapService.setBasemapOpacity(this.basemapOpacity);
   }
 
 }
