@@ -8,4 +8,5 @@
     background-color: var(--main-dark);
     transition: ease-in-out;
     transition-duration: 0.25s;
+    cursor: pointer;
 }

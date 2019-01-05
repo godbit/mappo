@@ -5,7 +5,8 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 :root {
     /* Basics */
-    --white: #e7f3f7;
+    --white: hsl(120, 10%, 95%);
+    --light: hsl(120, 10%, 90%);
 
     /* App colors */
     --main: hsl(120, 58%, 30%);
@@ -16,4 +17,17 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
     /* Other */
     --shadow: rgba(58, 103, 133, 0.5);
+}
+
+/* ============ Menu globals ========= */
+
+.menu-item-container {
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin: 10px 5px;
+    display: flex;
+    flex: 1;
+    position: relative;
+    background-color: var(--light);
+    box-shadow: 1px 4px 8px var(--shadow);
 }
