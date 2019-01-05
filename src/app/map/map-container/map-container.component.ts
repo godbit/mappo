@@ -5,6 +5,8 @@ import OlOSM from 'ol/source/OSM';
 import OlTileLayer from 'ol/layer/Tile';
 import OlView from 'ol/View';
 
+// Import works but ts complains anyway.
+// @ts-ignore
 import { fromLonLat } from 'ol/proj';
 
 @Component({
@@ -12,6 +14,7 @@ import { fromLonLat } from 'ol/proj';
   templateUrl: './map-container.component.html',
   styleUrls: ['./map-container.component.css']
 })
+
 export class MapContainerComponent implements OnInit {
   lat: number = 59.00;
   lng: number = 17.50;
