@@ -22,6 +22,7 @@ export class MapContainerComponent implements OnInit {
   zoom: number = 7;
   map: OlMap;
   source: OlOSM;
+  currentBasemap: OlTileLayer;
   defaultBasemap: OlTileLayer;
   lightBasemap: OlTileLayer;
   view: OlView;
@@ -58,9 +59,13 @@ export class MapContainerComponent implements OnInit {
       layers: [this.defaultBasemap, this.lightBasemap],
       view: this.view
     });
+
+    // Only display the defaultbasemap initially.
+    this.lightBasemap.setVisible(false);
+    this.currentBasemap = this.defaultBasemap;
   }
 
   passToMapService() {
-    this.mapService.initMapService(this.map, this.defaultBasemap, this.lightBasemap);
+    this.mapService.initMapService(this.map, this.defaultBasemap, this.lightBasemap, this.defaultBasemap);
   }
 }

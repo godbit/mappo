@@ -10,16 +10,18 @@ import OlView from 'ol/View';
 })
 export class MapService {
   map: OlMap;
+  currentBasemap: OlTileLayer;
   defaultBasemap: OlTileLayer;
   lightBasemap: OlTileLayer;
   view: OlView;
 
   constructor() { }
 
-  initMapService(map: OlMap, defaultBasemap: OlTileLayer, lightBasemap: OlTileLayer) {
+  initMapService(map: OlMap, defaultBasemap: OlTileLayer, lightBasemap: OlTileLayer, currentBasemap: OlTileLayer) {
     this.map = map;
     this.defaultBasemap = defaultBasemap;
     this.lightBasemap = lightBasemap;
+    this.currentBasemap = currentBasemap;
   }
 
   // ======== Getters ========
@@ -37,14 +39,22 @@ export class MapService {
 
   // ======== Layers ========
 
+  setBasemap(basemap: OlTileLayer) {
+      if (basemap == this.currentBasemap) {
+        return;
+      }
+      this.currentBasemap = basemap;
+      this.defaultBasemap.setVisible(!this.defaultBasemap.getVisible());
+      this.lightBasemap.setVisible(!this.lightBasemap.getVisible());
+  }
+
   /**
    * Takes a number between 0 and 100 and sets the opacity of the layer accoringly
    */
-  setLayerTransparency(opacity: number) {
+  setBasemapTransparency(opacity: number) {
     // OL takes opacitiy 0 <= o <= 1
     let o = opacity/100;
-    this.lightBasemap.setOpacity(o);
-    console.log(o);
+    this.currentBasemap.setOpacity(o);
   }
 
 }

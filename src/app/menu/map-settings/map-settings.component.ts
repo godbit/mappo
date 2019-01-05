@@ -16,7 +16,7 @@ export class MapSettingsComponent implements OnInit {
 
   updateTransparency(event) {
     this.layerTransparency = event.value;
-    this.mapService.setLayerTransparency(this.layerTransparency);
+    this.mapService.setBasemapTransparency(this.layerTransparency);
   }
 
 }
