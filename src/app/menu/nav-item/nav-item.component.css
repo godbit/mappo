@@ -1,0 +1,10 @@
+.nav-item {
+    padding: 15px;
+}
+
+.nav-item:hover {
+    color: var(--main-light);
+    background-color: var(--main-dark);
+    transition: ease-in-out;
+    transition-duration: 0.25s;
+}
