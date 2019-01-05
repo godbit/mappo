@@ -32,7 +32,7 @@ export class MapContainerComponent implements OnInit {
 
   initMap() {
     this.source = new OlOSM({
-      url: 'http://tile.osm.org/{z}/{x}/{y}.png'
+      url: 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9haGhvbG0iLCJhIjoiY2lrZWNmNDI2MDA0YnY4bHo3aXU1dGZkeSJ9.8Eavws7sLknJNwX_9YcEpw'
     });
 
     this.layer = new OlTileLayer({
