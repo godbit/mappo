@@ -38,10 +38,6 @@ export class MapService {
       if (name == this.currentBasemap[1]) {
         return;
       }
-      console.log(name);
-      console.log(this.defaultBasemap[0].getVisible());
-      console.log(this.lightBasemap[0].getVisible());
-
 
       // Update which is current
       if (name == this.defaultBasemap[1]) {
@@ -53,10 +49,6 @@ export class MapService {
       // Toggle visibility
       this.defaultBasemap[0].setVisible(!this.defaultBasemap[0].getVisible());
       this.lightBasemap[0].setVisible(!this.lightBasemap[0].getVisible());
-
-      console.log(this.defaultBasemap[0].getVisible());
-      console.log(this.lightBasemap[0].getVisible());
-
   }
 
   getCurrentBasemapName() {
