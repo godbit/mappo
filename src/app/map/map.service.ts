@@ -10,30 +10,21 @@ import OlView from 'ol/View';
 })
 export class MapService {
   map: OlMap;
-  source: OlOSM;
-  initialLayer: OlTileLayer;
+  defaultBasemap: OlTileLayer;
+  lightBasemap: OlTileLayer;
   view: OlView;
 
   constructor() { }
 
-  initMapService(map: OlMap, source: OlOSM, initialLayer: OlTileLayer, view: OlView) {
+  initMapService(map: OlMap, defaultBasemap: OlTileLayer, lightBasemap: OlTileLayer) {
     this.map = map;
-    this.source = source;
-    this.initialLayer = initialLayer;
-    this.view = view;
+    this.defaultBasemap = defaultBasemap;
+    this.lightBasemap = lightBasemap;
   }
 
   // ======== Getters ========
   getMap() {
     return this.map;
-  }
-
-  getSource() {
-    return this.source;
-  }
-
-  getBaseLayer() {
-    return this.initialLayer;
   }
 
   getView() {
@@ -52,7 +43,8 @@ export class MapService {
   setLayerTransparency(opacity: number) {
     // OL takes opacitiy 0 <= o <= 1
     let o = opacity/100;
-    this.initialLayer.setOpacity(o);
+    this.lightBasemap.setOpacity(o);
+    console.log(o);
   }
 
 }

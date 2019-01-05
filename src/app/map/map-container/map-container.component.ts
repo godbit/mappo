@@ -22,7 +22,8 @@ export class MapContainerComponent implements OnInit {
   zoom: number = 7;
   map: OlMap;
   source: OlOSM;
-  initialLayer: OlTileLayer;
+  defaultBasemap: OlTileLayer;
+  lightBasemap: OlTileLayer;
   view: OlView;
 
   constructor(private mapService: MapService) { }
@@ -33,12 +34,18 @@ export class MapContainerComponent implements OnInit {
   }
 
   initMap() {
-    this.source = new OlOSM({
+    let sourceDefault = new OlOSM({
+      url: 'http://tile.osm.org/{z}/{x}/{y}.png'
+    });
+    let sourceLight = new OlOSM({
       url: 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9haGhvbG0iLCJhIjoiY2lrZWNmNDI2MDA0YnY4bHo3aXU1dGZkeSJ9.8Eavws7sLknJNwX_9YcEpw'
     });
 
-    this.initialLayer = new OlTileLayer({
-      source: this.source
+    this.defaultBasemap = new OlTileLayer({
+      source: sourceDefault
+    });
+    this.lightBasemap = new OlTileLayer({
+      source: sourceLight
     });
 
     this.view = new OlView({
@@ -48,12 +55,12 @@ export class MapContainerComponent implements OnInit {
 
     this.map = new OlMap({
       target: 'map',
-      layers: [this.initialLayer],
+      layers: [this.defaultBasemap, this.lightBasemap],
       view: this.view
     });
   }
 
   passToMapService() {
-    this.mapService.initMapService(this.map, this.source, this.initialLayer, this.view);
+    this.mapService.initMapService(this.map, this.defaultBasemap, this.lightBasemap);
   }
 }
