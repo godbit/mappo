@@ -21,13 +21,6 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 /* ============ Menu globals ========= */
 
-.menu-item-container {
-    box-sizing: border-box;
-    padding: 10px 0;
-    margin: 10px 5px;
-    display: flex;
-    flex: 1;
-    position: relative;
-    background-color: var(--light);
-    box-shadow: 1px 4px 8px var(--shadow);
+.full-width {
+    width: 100%;
 }
