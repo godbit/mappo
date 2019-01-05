@@ -1,14 +1,18 @@
 <div class="settings-container">
   <div class="settings-item">
-    Show map-layer: (add toggle here) <mat-slide-toggle></mat-slide-toggle>
+    <span class="text">Show map-layer </span><mat-slide-toggle></mat-slide-toggle>
   </div>
-  <div class="settings-item">
-    Layer-transparency:
+  <mat-divider></mat-divider>
+  <div class="settings-item column">
+    <span class="text full-width">Layer-transparency</span>
+    <mat-slider (input)="updateTransparency($event)" [thumbLabel]="true" [(ngModel)]="layerTransparency" class="full-width"></mat-slider>
   </div>
-  <p class="settings-item">
+  <mat-divider></mat-divider>
+  <span class="text full-width settings-item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat eros at rutrum laoreet.
       Vestibulum posuere orci ut posuere suscipit. Mauris porttitor luctus magna. Nunc viverra commodo
       sapien luctus venenatis. Maecenas ornare rutrum velit, ut aliquam erat efficitur nec. Integer a leo
       ipsum. Sed vel pharetra sapien, vel pretium erat.
-  </p>
+  </span>
+  <mat-divider></mat-divider>
 </div>

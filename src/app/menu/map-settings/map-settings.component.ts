@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map-settings.component.css']
 })
 export class MapSettingsComponent implements OnInit {
+  layerTransparency: number = 50;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateTransparency(event) {
+    this.layerTransparency = event.value;
   }
 
 }

@@ -7,4 +7,16 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-item .text {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.settings-item.column {
+    flex-direction: column;
 }
