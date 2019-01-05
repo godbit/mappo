@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MapModule } from './map/map.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MapModule,
     MenuModule,
     LayoutModule
   ],

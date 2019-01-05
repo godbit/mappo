@@ -1,10 +1,12 @@
 .menu-container {
+    position: relative;
+    top: 10px;
+    left: 10px;
     background-color: var(--white);
     width: 35vw;
     min-width: 400px;
     padding: 10px;
     box-shadow: 1px 4px 8px var(--shadow);
-    margin: 15px;
     border-radius: 8px;
     box-sizing: border-box;
 }
