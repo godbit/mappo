@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select';
 
 import { MapService } from '../map/map.service';
 
@@ -29,7 +30,8 @@ import { MapService } from '../map/map.service';
     MatButtonModule,
     MatDividerModule,
     MatToolbarModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSelectModule
   ],
   exports: [
     MenuContainerComponent

@@ -5,7 +5,7 @@
 
 .settings-item {
     width: 100%;
-    padding: 10px;
+    padding: 20px 10px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -14,7 +14,8 @@
 
 .settings-item .text {
     flex: 1;
-    padding: 10px 0;
+    padding: 10px 0 15px;
+    font-weight: 500;
 }
 
 .settings-item.column {

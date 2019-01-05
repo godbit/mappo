@@ -7,11 +7,20 @@ import { MapService } from 'src/app/map/map.service';
   styleUrls: ['./map-settings.component.css']
 })
 export class MapSettingsComponent implements OnInit {
-  layerTransparency: number = 50;
+  layerTransparency: number = 100;
+  basemapNames: string [];
+  currentBasemapName: string;
 
-  constructor(private mapService: MapService) {}
+  constructor(private mapService: MapService) {
+    this.basemapNames = this.mapService.getBasemapNames();
+    this.currentBasemapName = this.mapService.getCurrentBasemapName();
+  }
 
   ngOnInit() {
+  }
+
+  changeBasemap(event) {
+    this.mapService.setBasemapByName(event.value);
   }
 
   updateTransparency(event) {
