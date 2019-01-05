@@ -15,6 +15,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSliderModule} from '@angular/material/slider';
 
+import { MapService } from '../map/map.service';
+
 @NgModule({
   declarations: [MenuContainerComponent, SearchComponent, MapSettingsComponent],
   imports: [
@@ -31,6 +33,9 @@ import {MatSliderModule} from '@angular/material/slider';
   ],
   exports: [
     MenuContainerComponent
+  ],
+  providers: [
+    MapService
   ]
 
 })

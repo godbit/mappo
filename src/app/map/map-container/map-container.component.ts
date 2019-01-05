@@ -8,6 +8,7 @@ import OlView from 'ol/View';
 // Import works but ts complains anyway.
 // @ts-ignore
 import { fromLonLat } from 'ol/proj';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-map-container',
@@ -21,13 +22,14 @@ export class MapContainerComponent implements OnInit {
   zoom: number = 7;
   map: OlMap;
   source: OlOSM;
-  layer: OlTileLayer;
+  initialLayer: OlTileLayer;
   view: OlView;
 
-  constructor() { }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
     this.initMap();
+    this.passToMapService();
   }
 
   initMap() {
@@ -35,7 +37,7 @@ export class MapContainerComponent implements OnInit {
       url: 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9haGhvbG0iLCJhIjoiY2lrZWNmNDI2MDA0YnY4bHo3aXU1dGZkeSJ9.8Eavws7sLknJNwX_9YcEpw'
     });
 
-    this.layer = new OlTileLayer({
+    this.initialLayer = new OlTileLayer({
       source: this.source
     });
 
@@ -46,8 +48,12 @@ export class MapContainerComponent implements OnInit {
 
     this.map = new OlMap({
       target: 'map',
-      layers: [this.layer],
+      layers: [this.initialLayer],
       view: this.view
     });
+  }
+
+  passToMapService() {
+    this.mapService.initMapService(this.map, this.source, this.initialLayer, this.view);
   }
 }

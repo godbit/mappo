@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapContainerComponent } from './map-container/map-container.component';
+import { MapService } from './map.service';
 
 @NgModule({
   declarations: [MapContainerComponent],
@@ -9,6 +10,9 @@ import { MapContainerComponent } from './map-container/map-container.component';
   ],
   exports: [
     MapContainerComponent
+  ],
+  providers: [
+    MapService
   ]
 })
 export class MapModule { }
