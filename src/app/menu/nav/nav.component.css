@@ -1,7 +1,7 @@
 .nav-bar {
     display: flex;
     flex-direction: row;
-    padding: 30px;
+    padding: 5px;
     background-color: var(--main);
     color: var(--white);
     font-weight: 700;
