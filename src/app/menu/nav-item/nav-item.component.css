@@ -1,5 +1,6 @@
 .nav-item {
-    padding: 15px;
+    padding: 1vw 1.5vw;
+    flex: 1;
 }
 
 .nav-item:hover {

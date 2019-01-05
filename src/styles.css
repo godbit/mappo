@@ -13,4 +13,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     --main-dark: hsl(120, 58%, 20%);
     --accent: #f1b646bd;
     --accent-interact: #f88d3d;
+
+    /* Other */
+    --shadow: rgba(58, 103, 133, 0.5);
 }
