@@ -17,9 +17,10 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
 
 import { MapService } from '../map/map.service';
+import { SearchresultComponent } from './searchresult/searchresult.component';
 
 @NgModule({
-  declarations: [MenuContainerComponent, SearchComponent, MapSettingsComponent],
+  declarations: [MenuContainerComponent, SearchComponent, MapSettingsComponent, SearchresultComponent],
   imports: [
     CommonModule,
     FormsModule,

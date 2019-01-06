@@ -1,0 +1,19 @@
+.place-holder {
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.place-holder p {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.fill {
+    font-size: 250px;
+    height: 250px;
+    width: 250px;
+}
