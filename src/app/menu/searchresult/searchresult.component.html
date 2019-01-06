@@ -6,3 +6,7 @@
   <mat-icon class="fill searching">public</mat-icon>
   <p>Searching. :)</p>
 </div>
+<div class="place-holder" *ngIf="!noSearch && !result && !searching">
+  <mat-icon class="fill">layers_clear</mat-icon>
+  <p class="no-result">No result. :(</p>
+</div>

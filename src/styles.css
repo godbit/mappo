@@ -17,6 +17,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     --accent-interact: #f88d3d;
 
     /* Other */
+    --error: hsl(0, 75%, 50%);
     --shadow: rgba(58, 103, 133, 0.5);
 }
 

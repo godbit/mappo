@@ -32,6 +32,9 @@ export class SearchService {
   }
 
   handleResponse(response) {
+    if (response.length == 0) {
+      this.noResult();
+    }
     console.log(response);
   }
 
@@ -46,6 +49,13 @@ export class SearchService {
     this.noSearchChange.next(this.noSearch);
     // Set into searching state
     this.searching = true;
+    this.searchingChange.next(this.searching);
+  }
+
+  noResult() {
+    this.result = false;
+    this.resultChange.next(this.result);
+    this.searching = false;
     this.searchingChange.next(this.searching);
   }
 

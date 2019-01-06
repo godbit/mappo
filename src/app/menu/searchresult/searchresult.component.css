@@ -31,6 +31,10 @@
     }
 }
 
+.no-result {
+    color: var(--error);
+}
+
 .searching {
     animation: rotation 5s infinite linear;
 }
