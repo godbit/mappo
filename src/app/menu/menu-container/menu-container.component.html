@@ -2,12 +2,30 @@
   <mat-toolbar>
     <span>Mappo</span>
   </mat-toolbar>
+
   <app-search></app-search>
+
   <mat-tab-group>
-    <mat-tab label="Basemap">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>image_search</mat-icon>Searchresult
+      </ng-template>
+      <mat-icon class="fill">bubble_chart</mat-icon>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>map</mat-icon>Basemap
+      </ng-template>
       <app-map-settings></app-map-settings>
     </mat-tab>
-    <mat-tab label="Data layers"> Content 2 </mat-tab>
-    <mat-tab label="About"> Content 3 </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>layers</mat-icon>Data layers
+      </ng-template>
+      Datalayers inc.
+    </mat-tab>
+
   </mat-tab-group>
 </div>

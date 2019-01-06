@@ -21,10 +21,8 @@ export class MapService {
   map: OlMap;
 
   currentBasemap: Basemap;
-  defaultBasemap: Basemap;  // [OlTileLayer, string] = [, "Standard OSM"];
-  lightBasemap: Basemap;    // [OlTileLayer, string] = [, "Light OSM"];
-
-
+  defaultBasemap: Basemap;
+  lightBasemap: Basemap;
 
   constructor() { }
 
@@ -44,7 +42,7 @@ export class MapService {
     return this.map.getLayers();
   }
 
-  // ======== Layers ========
+  // ======== Basemap ========
 
   setBasemapByTitle(title: string) {
       // No change -> return

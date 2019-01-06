@@ -32,7 +32,6 @@ export class MapSettingsComponent implements OnInit {
   }
 
   toggleLayerVisibility() {
-    console.log(this.currentBasemapVisible);
     this.mapService.setCurrentBasemapVisible(this.currentBasemapVisible);
   }
 
