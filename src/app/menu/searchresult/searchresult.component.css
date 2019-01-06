@@ -47,3 +47,26 @@
         -webkit-transform: rotate(359deg);
     }
 }
+
+/* -------- Result cards -------- */
+
+.mat-card {
+    margin: 8px 2px;
+}
+
+.mat-card-header .mat-card-title {
+    font-size: 18px;
+}
+
+.mat-card-header-text {
+    margin: 0;
+}
+
+.mat-card-avatar {
+    height: 36px;
+    width: 36px;
+}
+
+.mat-card-avatar .mat-icon {
+    font-size: 36px;
+}

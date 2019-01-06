@@ -11,6 +11,8 @@
     border-radius: 8px;
     box-sizing: border-box;
     font-size: 18px;
+    max-height: 98%;
+    overflow: auto;
 }
 
 @media (max-width: 700px) {

@@ -11,6 +11,18 @@
   <p class="no-result">No result. :(</p>
 </div>
 <div class="result" *ngIf="!noSearch && hasResult && !searching">
-  <p>Found something!</p>
-  <p *ngFor="let result of searchResults">{{result.display_name}}</p>
+  <mat-card class="example-card"*ngFor="let result of searchResults">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>place</mat-icon>
+      </div>
+      <mat-card-title>{{result.display_name}}</mat-card-title>
+      <mat-card-subtitle>{{result.osm_id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Location information....
+      </p>
+    </mat-card-content>
+  </mat-card>
 </div>
