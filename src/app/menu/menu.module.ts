@@ -15,6 +15,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { MapService } from '../map/map.service';
 import { SearchresultComponent } from './searchresult/searchresult.component';
@@ -32,7 +33,8 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
     MatDividerModule,
     MatToolbarModule,
     MatSliderModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ],
   exports: [
     MenuContainerComponent

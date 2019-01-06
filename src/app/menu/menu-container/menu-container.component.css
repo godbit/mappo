@@ -6,7 +6,7 @@
     width: 35vw;
     min-width: 550px;
     max-width: 650px;
-    padding: 20px;
+    padding: 5px;
     box-shadow: 1px 4px 8px var(--shadow);
     border-radius: 8px;
     box-sizing: border-box;
