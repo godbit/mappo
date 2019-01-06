@@ -6,20 +6,33 @@ import OlTileLayer from 'ol/layer/Tile';
 @Injectable({
   providedIn: 'root'
 })
+
+class Basemap {
+  layer: OlTileLayer;
+  title: string;
+
+  constructor(layer: OlTileLayer,title: string) {
+    this.layer = layer;
+    this.title = title;
+  }
+}
+
 export class MapService {
   map: OlMap;
 
-  currentBasemap: [OlTileLayer, string] = [, ""];
-  defaultBasemap: [OlTileLayer, string] = [, "Standard OSM"];
-  lightBasemap: [OlTileLayer, string] = [, "Light OSM"];
+  currentBasemap: Basemap;
+  defaultBasemap: Basemap;  // [OlTileLayer, string] = [, "Standard OSM"];
+  lightBasemap: Basemap;    // [OlTileLayer, string] = [, "Light OSM"];
+
+
 
   constructor() { }
 
-  initMapService(map: OlMap, defaultBasemap: OlTileLayer, lightBasemap: OlTileLayer, currentBasemap: OlTileLayer) {
+  initMapService(map: OlMap, defaultBasemap: OlTileLayer, lightBasemap: OlTileLayer) {
     this.map = map;
-    this.defaultBasemap[0] = defaultBasemap;
-    this.lightBasemap[0] = lightBasemap;
-    this.currentBasemap[0] = currentBasemap;
+    this.defaultBasemap = new Basemap(defaultBasemap, "Standard OSM");
+    this.lightBasemap = new Basemap(lightBasemap, "Light OSM");
+    this.currentBasemap = this.defaultBasemap;
   }
 
   // ======== Getters ========
@@ -33,30 +46,30 @@ export class MapService {
 
   // ======== Layers ========
 
-  setBasemapByName(name: string) {
+  setBasemapByTitle(title: string) {
       // No change -> return
-      if (name == this.currentBasemap[1]) {
+      if (title == this.currentBasemap.title) {
         return;
       }
 
       // Update which is current
-      if (name == this.defaultBasemap[1]) {
+      if (title == this.defaultBasemap.title) {
         this.currentBasemap = this.defaultBasemap;
       } else {
         this.currentBasemap = this.lightBasemap;
       }
 
       // Toggle visibility
-      this.defaultBasemap[0].setVisible(!this.defaultBasemap[0].getVisible());
-      this.lightBasemap[0].setVisible(!this.lightBasemap[0].getVisible());
+      this.defaultBasemap.layer.setVisible(!this.defaultBasemap.layer.getVisible());
+      this.lightBasemap.layer.setVisible(!this.lightBasemap.layer.getVisible());
   }
 
-  getCurrentBasemapName() {
-    return this.currentBasemap[1];
+  getCurrentBasemapTitle() {
+    return this.currentBasemap.title;
   }
 
-  getBasemapNames() {
-    return [this.defaultBasemap[1], this.lightBasemap[1]]
+  getBasemapTitles() {
+    return [this.defaultBasemap.title, this.lightBasemap.title]
   }
 
   /**
@@ -65,11 +78,11 @@ export class MapService {
   setBasemapOpacity(opacity: number) {
     // OL takes opacitiy 0 <= o <= 1
     let o = opacity/100;
-    this.currentBasemap[0].setOpacity(o);
+    this.currentBasemap.layer.setOpacity(o);
   }
 
   getCurrentBasemapOpacity() {
-    return this.currentBasemap[0].getOpacity() * 100;
+    return this.currentBasemap.layer.getOpacity() * 100;
   }
 
 }

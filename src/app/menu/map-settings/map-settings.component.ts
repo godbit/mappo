@@ -8,19 +8,19 @@ import { MapService } from 'src/app/map/map.service';
 })
 export class MapSettingsComponent implements OnInit {
   basemapOpacity: number = 100;
-  basemapNames: string [];
-  currentBasemapName: string;
+  basemapTitles: string [];
+  currentBasemapTitle: string;
 
-  constructor(private mapService: MapService) {
-    this.basemapNames = this.mapService.getBasemapNames();
-    this.currentBasemapName = this.mapService.getCurrentBasemapName();
-  }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
+    this.basemapTitles = this.mapService.getBasemapTitles();
+    this.currentBasemapTitle = this.mapService.getCurrentBasemapTitle();
+    console.log("Current for component in init " + this.currentBasemapTitle);
   }
 
   changeBasemap(event) {
-    this.mapService.setBasemapByName(event.value);
+    this.mapService.setBasemapByTitle(event.value);
     this.basemapOpacity = this.mapService.getCurrentBasemapOpacity();
   }
 

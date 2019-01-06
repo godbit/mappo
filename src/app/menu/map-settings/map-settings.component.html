@@ -1,8 +1,8 @@
 <div class="settings-container">
   <div class="settings-item column">
     <span class="text full-width">Basemap</span>
-    <mat-select (selectionChange)="changeBasemap($event)" [(value)]="currentBasemapName">
-      <mat-option *ngFor="let name of basemapNames" value="{{name}}">{{name}}</mat-option>
+    <mat-select (selectionChange)="changeBasemap($event)" [(value)]="currentBasemapTitle">
+      <mat-option *ngFor="let title of basemapTitles" value="{{title}}">{{title}}</mat-option>
     </mat-select>
   </div>
 
