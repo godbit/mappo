@@ -29,6 +29,12 @@ export class SearchresultComponent implements OnInit {
     this.initSubscriptions();
   }
 
+  /**
+   * Initiates all subsriptions to the searchService to enable datalinking the
+   * search html-elements.
+   *
+   * When variables in the searchService changes values the html is rendered correspondingly.
+   */
   initSubscriptions() {
     this._noSearchSubscription = this.searchService.noSearchChange.subscribe((value: boolean) => {
         this.noSearch = value;
@@ -44,8 +50,6 @@ export class SearchresultComponent implements OnInit {
 
     this._searchResultsSubscription = this.searchService.searchResultsChange.subscribe((value: Result[]) => {
         this.searchResults = value;
-        console.log("searchResults changed");
-        console.log(this.searchResults);
     });
   }
 

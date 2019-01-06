@@ -10,6 +10,10 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService) { }
 
+  /**
+   * Tells the searchService to perform a search if the searchfield
+   * is not empty.
+   */
   search(searchString) {
     if (searchString) {
       this.searchService.search(searchString);

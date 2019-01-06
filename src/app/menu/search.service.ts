@@ -36,6 +36,13 @@ export class SearchService {
     obs.subscribe((response) => this.handleResponse(response));
   }
 
+  /**
+   * Handles the response of the search-request and sets the state of this
+   * service based on the response.
+   *
+   * Results are saved as Result object and then rendered through the observable
+   * updated in this.resultState();
+   */
   handleResponse(response) {
     this.noSearchState();
 
@@ -52,7 +59,7 @@ export class SearchService {
     }
 
     // Enter state that result has been received.
-    this.retsultState();
+    this.resultState();
   }
 
   /**
@@ -77,11 +84,18 @@ export class SearchService {
     }
   }
 
+  /**
+   * Removes spacs from the searchstring in order to generate a correct
+   * get URL.
+   */
   parseSearchString(searchString: string) {
     let searchUrl = searchString.replace(" ", "+")
     return searchUrl;
   }
 
+  /**
+   * Sets the service in a searching state.
+   */
   searchState() {
     // Update that a search has occured
     this.noSearch = false;
@@ -91,17 +105,28 @@ export class SearchService {
     this.searchingChange.next(this.searching);
   }
 
+  /**
+  * Removes the service from a searching state.
+  */
   noSearchState() {
     this.searching = false;
     this.searchingChange.next(this.searching);
   }
 
-  retsultState() {
+  /**
+  * Sets the service in a state where it has recived a correct
+  * response from the search query.
+  */
+  resultState() {
     this.hasResult = true;
     this.hasResultChange.next(this.hasResult)
     this.searchResultsChange.next(this.searchResults);
   }
 
+  /**
+  * Sets the service in a state where it did not recive any
+  * search results from the query.
+  */
   noResultState() {
     this.hasResult = false;
     this.hasResultChange.next(this.hasResult);

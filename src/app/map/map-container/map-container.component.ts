@@ -33,6 +33,9 @@ export class MapContainerComponent implements OnInit {
     this.passToMapService();
   }
 
+  /**
+   * Creates a openlayers map with two layers (basemaps)
+   */
   initMap() {
     let sourceDefault = new OlOSM({
       url: 'http://tile.osm.org/{z}/{x}/{y}.png'
@@ -63,6 +66,10 @@ export class MapContainerComponent implements OnInit {
     this.lightBasemap.setVisible(false);
   }
 
+  /**
+   * Passes the created map and reference to basemaps to the central mapservice which
+   * handles all interaction and updating of the map object.
+   */
   passToMapService() {
     this.mapService.initMapService(this.map, this.defaultBasemap, this.lightBasemap);
   }

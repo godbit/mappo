@@ -20,17 +20,28 @@ export class MapSettingsComponent implements OnInit {
     this.currentBasemapVisible = this.mapService.getCurrentBasemapVisibility();
   }
 
+  /**
+   * Changes to active basemap to the map selected in the droprown.
+   * Sets the basemapOpacity control to the to match selcted basemap.
+   * Sets the basemapVisibile control to the visibilty of the selected basemap.
+   */
   changeBasemap(event) {
     this.mapService.setBasemapByTitle(event.value);
     this.basemapOpacity = this.mapService.getCurrentBasemapOpacity();
     this.currentBasemapVisible = this.mapService.getCurrentBasemapVisibility();
   }
 
+  /**
+   * Updates the basemap transparancy through the mapService.
+   */
   updateTransparency(event) {
     this.basemapOpacity = event.value;
     this.mapService.setBasemapOpacity(this.basemapOpacity);
   }
 
+  /**
+  * Toggles the basemap visiblity through the mapService.
+  */
   toggleLayerVisibility() {
     this.mapService.setCurrentBasemapVisible(this.currentBasemapVisible);
   }
