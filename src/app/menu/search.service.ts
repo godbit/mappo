@@ -10,12 +10,14 @@ export class SearchService {
   searching = false;
   result = false;
 
+  results: Result[] = [];
+
   noSearchChange: Subject<boolean> = new Subject<boolean>();
   searchingChange: Subject<boolean> = new Subject<boolean>();
   resultChange: Subject<boolean> = new Subject<boolean>();
 
   baseUrl = "https://nominatim.openstreetmap.org/search?q=";
-  configUrl = "&format=json&polygon_kml=1&addressdetails=1"
+  configUrl = "&format=json&polygon_kml=1&addressdetails=1";
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +25,8 @@ export class SearchService {
   search(searchString) {
     // Update states for html-elements
     this.searchState();
+    // Remove all results from previous search
+    this.emptyResults();
     // Parse string for request
     let searchUrl = this.parseSearchString(searchString)
 
@@ -34,12 +38,42 @@ export class SearchService {
   handleResponse(response) {
     this.noSearchState();
 
+    // No result found
     if (response.length == 0) {
       this.noResultState();
       return;
     }
-    this.retsultState()
-    console.log(response);
+
+    // Enter state that result has been received.
+    this.retsultState();
+
+    // Add all results from current search to result array as Result objects.
+    for (var i in response) {
+      var searchResult: Result = this.buildResult(response[i]);
+      this.results.push(searchResult);
+    }
+  }
+
+  /**
+   * Iterate through response and save as Result object.
+   */
+  buildResult(responseItem): Result {
+    let r = new Result();
+
+    for (var prop in responseItem) {
+      r[prop] = responseItem[prop];
+    }
+
+    return r;
+  }
+
+  /**
+   * Empty the result array of current results.
+   */
+  emptyResults() {
+    if (this.results) {
+      this.results = [];
+    }
   }
 
   parseSearchString(searchString: string) {
@@ -74,3 +108,27 @@ export class SearchService {
   }
 
 }
+
+/**
+ * Holds all properties of a search response.
+ */
+class Result {
+  // TODO: Type this correctly when copying response-data.
+  address: any;
+  boundingbox: [string, string, string, string];
+  class: string;
+  display_name: string;
+  geokml: string;
+  icon: string;
+  importance: string;
+  lat: string;
+  licence: string;
+  lon: string;
+  osm_id: string;
+  osm_type: string;
+  place_id: string;
+  type: string;
+
+  constructor() { }
+}
+
