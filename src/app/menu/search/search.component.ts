@@ -8,6 +8,8 @@ import { SearchService } from '../search.service';
 })
 export class SearchComponent implements OnInit {
 
+  value: string;
+
   constructor(private searchService: SearchService) { }
 
   /**
