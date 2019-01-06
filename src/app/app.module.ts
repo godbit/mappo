@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MapModule } from './map/map.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MapModule } from './map/map.module';
     BrowserAnimationsModule,
     MapModule,
     MenuModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

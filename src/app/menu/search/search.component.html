@@ -4,7 +4,7 @@
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
-    <button mat-button matSuffix mat-icon-button aria-label="Search" (click)="search()">
+    <button mat-button matSuffix mat-icon-button aria-label="Search" (click)="search(value)">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
