@@ -6,17 +6,6 @@ import OlTileLayer from 'ol/layer/Tile';
 @Injectable({
   providedIn: 'root'
 })
-
-class Basemap {
-  layer: OlTileLayer;
-  title: string;
-
-  constructor(layer: OlTileLayer,title: string) {
-    this.layer = layer;
-    this.title = title;
-  }
-}
-
 export class MapService {
   map: OlMap;
 
@@ -91,4 +80,14 @@ export class MapService {
     return this.currentBasemap.layer.getVisible();
   }
 
+}
+
+class Basemap {
+  layer: OlTileLayer;
+  title: string;
+
+  constructor(layer: OlTileLayer,title: string) {
+    this.layer = layer;
+    this.title = title;
+  }
 }

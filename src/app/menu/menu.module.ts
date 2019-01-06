@@ -19,6 +19,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 import { MapService } from '../map/map.service';
 import { SearchresultComponent } from './searchresult/searchresult.component';
+import { SearchService } from './search.service';
 
 @NgModule({
   declarations: [MenuContainerComponent, SearchComponent, MapSettingsComponent, SearchresultComponent],
@@ -40,7 +41,8 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
     MenuContainerComponent
   ],
   providers: [
-    MapService
+    MapService,
+    SearchService
   ]
 
 })
