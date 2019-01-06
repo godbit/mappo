@@ -10,23 +10,30 @@ export class MapSettingsComponent implements OnInit {
   basemapOpacity: number = 100;
   basemapTitles: string [];
   currentBasemapTitle: string;
+  currentBasemapVisible: boolean;
 
   constructor(private mapService: MapService) { }
 
   ngOnInit() {
     this.basemapTitles = this.mapService.getBasemapTitles();
     this.currentBasemapTitle = this.mapService.getCurrentBasemapTitle();
-    console.log("Current for component in init " + this.currentBasemapTitle);
+    this.currentBasemapVisible = this.mapService.getCurrentBasemapVisibility();
   }
 
   changeBasemap(event) {
     this.mapService.setBasemapByTitle(event.value);
     this.basemapOpacity = this.mapService.getCurrentBasemapOpacity();
+    this.currentBasemapVisible = this.mapService.getCurrentBasemapVisibility();
   }
 
   updateTransparency(event) {
     this.basemapOpacity = event.value;
     this.mapService.setBasemapOpacity(this.basemapOpacity);
+  }
+
+  toggleLayerVisibility() {
+    console.log(this.currentBasemapVisible);
+    this.mapService.setCurrentBasemapVisible(this.currentBasemapVisible);
   }
 
 }

@@ -52,16 +52,16 @@ export class MapService {
         return;
       }
 
-      // Update which is current
+      // Update which is current and toggle visibility
       if (title == this.defaultBasemap.title) {
         this.currentBasemap = this.defaultBasemap;
+        this.defaultBasemap.layer.setVisible(true);
+        this.lightBasemap.layer.setVisible(false);
       } else {
         this.currentBasemap = this.lightBasemap;
+        this.lightBasemap.layer.setVisible(true);
+        this.defaultBasemap.layer.setVisible(false);
       }
-
-      // Toggle visibility
-      this.defaultBasemap.layer.setVisible(!this.defaultBasemap.layer.getVisible());
-      this.lightBasemap.layer.setVisible(!this.lightBasemap.layer.getVisible());
   }
 
   getCurrentBasemapTitle() {
@@ -83,6 +83,14 @@ export class MapService {
 
   getCurrentBasemapOpacity() {
     return this.currentBasemap.layer.getOpacity() * 100;
+  }
+
+  setCurrentBasemapVisible(visible) {
+    this.currentBasemap.layer.setVisible(visible);
+  }
+
+  getCurrentBasemapVisibility() {
+    return this.currentBasemap.layer.getVisible();
   }
 
 }

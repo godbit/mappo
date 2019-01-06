@@ -9,24 +9,14 @@
   <mat-divider></mat-divider>
 
   <div class="settings-item">
-    <span class="text">Show map-layer </span><mat-slide-toggle></mat-slide-toggle>
+    <span class="text">Show basemap </span>
+    <mat-slide-toggle (change)="toggleLayerVisibility()" [(ngModel)]="currentBasemapVisible" [checked]="currentBasemapVisible"></mat-slide-toggle>
   </div>
 
   <mat-divider></mat-divider>
 
   <div class="settings-item column">
-    <span class="text full-width">Transparency</span>
+    <span class="text full-width">Basemap opacity</span>
     <mat-slider (input)="updateTransparency($event)" [thumbLabel]="true" [(ngModel)]="basemapOpacity" class="full-width"></mat-slider>
   </div>
-
-  <mat-divider></mat-divider>
-
-  <span class="text full-width settings-item">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat eros at rutrum laoreet.
-      Vestibulum posuere orci ut posuere suscipit. Mauris porttitor luctus magna. Nunc viverra commodo
-      sapien luctus venenatis. Maecenas ornare rutrum velit, ut aliquam erat efficitur nec. Integer a leo
-      ipsum. Sed vel pharetra sapien, vel pretium erat.
-  </span>
-
-  <mat-divider></mat-divider>
 </div>
