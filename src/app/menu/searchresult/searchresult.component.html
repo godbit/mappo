@@ -6,10 +6,10 @@
   <mat-icon class="fill searching">public</mat-icon>
   <p>Searching. :)</p>
 </div>
-<div class="place-holder" *ngIf="!noSearch && !result && !searching">
+<div class="place-holder" *ngIf="!noSearch && !hasResult && !searching">
   <mat-icon class="fill">layers_clear</mat-icon>
   <p class="no-result">No result. :(</p>
 </div>
-<div class="result" *ngIf="!noSearch && result && !searching">
+<div class="result" *ngIf="!noSearch && hasResult && !searching">
   <p>Found something!</p>
 </div>

@@ -8,13 +8,14 @@ import { HttpClient } from '@angular/common/http';
 export class SearchService {
   noSearch = true;
   searching = false;
-  result = false;
+  hasResult = false;
 
-  results: Result[] = [];
+  searchResults: Result[] = [];
+  //resultChange: Subject<Result[]> = new Subject<Result[]>();
 
   noSearchChange: Subject<boolean> = new Subject<boolean>();
   searchingChange: Subject<boolean> = new Subject<boolean>();
-  resultChange: Subject<boolean> = new Subject<boolean>();
+  hasResultChange: Subject<boolean> = new Subject<boolean>();
 
   baseUrl = "https://nominatim.openstreetmap.org/search?q=";
   configUrl = "&format=json&polygon_kml=1&addressdetails=1";
@@ -50,7 +51,7 @@ export class SearchService {
     // Add all results from current search to result array as Result objects.
     for (var i in response) {
       var searchResult: Result = this.buildResult(response[i]);
-      this.results.push(searchResult);
+      this.searchResults.push(searchResult);
     }
   }
 
@@ -71,8 +72,8 @@ export class SearchService {
    * Empty the result array of current results.
    */
   emptyResults() {
-    if (this.results) {
-      this.results = [];
+    if (this.searchResults) {
+      this.searchResults = [];
     }
   }
 
@@ -96,13 +97,13 @@ export class SearchService {
   }
 
   retsultState() {
-    this.result = true;
-    this.resultChange.next(this.result);
+    this.hasResult = true;
+    this.hasResultChange.next(this.hasResult);
   }
 
   noResultState() {
-    this.result = false;
-    this.resultChange.next(this.result);
+    this.hasResult = false;
+    this.hasResultChange.next(this.hasResult);
     this.searching = false;
     this.searchingChange.next(this.searching);
   }

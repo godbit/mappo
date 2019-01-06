@@ -9,11 +9,11 @@ import { SearchService } from '../search.service';
 export class SearchresultComponent implements OnInit {
   noSearch: boolean;
   searching: boolean;
-  result: boolean;
+  hasResult: boolean;
 
   _noSearchSubscription;
   _searchingSubscription;
-  _resultSubscription;
+  _resultHasSubscription;
 
   constructor(private searchService: SearchService) {
   }
@@ -21,7 +21,7 @@ export class SearchresultComponent implements OnInit {
   ngOnInit() {
     this.noSearch = this.searchService.noSearch;
     this.searching = this.searchService.searching;
-    this.result = this.searchService.result;
+    this.hasResult = this.searchService.hasResult;
     this.initSubscriptions();
   }
 
@@ -34,8 +34,8 @@ export class SearchresultComponent implements OnInit {
         this.searching = value
     });
 
-    this._resultSubscription = this.searchService.resultChange.subscribe((value: boolean) => {
-        this.result = value
+    this._resultHasSubscription = this.searchService.hasResultChange.subscribe((value: boolean) => {
+        this.hasResult = value
     });
   }
 
