@@ -22,7 +22,7 @@ export class SearchService {
 
   search(searchString) {
     // Update states for html-elements
-    this.updateSearchState();
+    this.searchState();
     // Parse string for request
     let searchUrl = this.parseSearchString(searchString)
 
@@ -32,9 +32,13 @@ export class SearchService {
   }
 
   handleResponse(response) {
+    this.noSearchState();
+
     if (response.length == 0) {
-      this.noResult();
+      this.noResultState();
+      return;
     }
+    this.retsultState()
     console.log(response);
   }
 
@@ -43,7 +47,7 @@ export class SearchService {
     return searchUrl;
   }
 
-  updateSearchState() {
+  searchState() {
     // Update that a search has occured
     this.noSearch = false;
     this.noSearchChange.next(this.noSearch);
@@ -52,7 +56,17 @@ export class SearchService {
     this.searchingChange.next(this.searching);
   }
 
-  noResult() {
+  noSearchState() {
+    this.searching = false;
+    this.searchingChange.next(this.searching);
+  }
+
+  retsultState() {
+    this.result = true;
+    this.resultChange.next(this.result);
+  }
+
+  noResultState() {
     this.result = false;
     this.resultChange.next(this.result);
     this.searching = false;
