@@ -4,7 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 15px;
+    overflow: hidden;
 }
 
 .place-holder p {
@@ -16,4 +17,29 @@
     font-size: 250px;
     height: 250px;
     width: 250px;
+}
+
+@media (max-width: 700px) {
+    .fill {
+        font-size: 45vw;
+        height: 45vw;
+        width: 45vw;
+    }
+
+    .place-holder p {
+        font-size: 5vw;
+    }
+}
+
+.searching {
+    animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
 }
