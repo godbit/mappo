@@ -12,4 +12,5 @@
 </div>
 <div class="result" *ngIf="!noSearch && hasResult && !searching">
   <p>Found something!</p>
+  <p *ngFor="let result of searchResults">{{result.display_name}}</p>
 </div>

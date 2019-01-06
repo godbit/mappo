@@ -11,7 +11,7 @@ export class SearchService {
   hasResult = false;
 
   searchResults: Result[] = [];
-  //resultChange: Subject<Result[]> = new Subject<Result[]>();
+  searchResultsChange: Subject<Result[]> = new Subject<Result[]>();
 
   noSearchChange: Subject<boolean> = new Subject<boolean>();
   searchingChange: Subject<boolean> = new Subject<boolean>();
@@ -45,14 +45,14 @@ export class SearchService {
       return;
     }
 
-    // Enter state that result has been received.
-    this.retsultState();
-
     // Add all results from current search to result array as Result objects.
     for (var i in response) {
       var searchResult: Result = this.buildResult(response[i]);
       this.searchResults.push(searchResult);
     }
+
+    // Enter state that result has been received.
+    this.retsultState();
   }
 
   /**
@@ -98,7 +98,8 @@ export class SearchService {
 
   retsultState() {
     this.hasResult = true;
-    this.hasResultChange.next(this.hasResult);
+    this.hasResultChange.next(this.hasResult)
+    this.searchResultsChange.next(this.searchResults);
   }
 
   noResultState() {
@@ -113,7 +114,7 @@ export class SearchService {
 /**
  * Holds all properties of a search response.
  */
-class Result {
+export class Result {
   // TODO: Type this correctly when copying response-data.
   address: any;
   boundingbox: [string, string, string, string];

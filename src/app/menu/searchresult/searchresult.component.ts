@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
+import { Result } from '../search.service';
 
 @Component({
   selector: 'app-searchresult',
@@ -10,6 +11,9 @@ export class SearchresultComponent implements OnInit {
   noSearch: boolean;
   searching: boolean;
   hasResult: boolean;
+
+  searchResults: Result[] = [];
+  _searchResultsSubscription;
 
   _noSearchSubscription;
   _searchingSubscription;
@@ -27,15 +31,21 @@ export class SearchresultComponent implements OnInit {
 
   initSubscriptions() {
     this._noSearchSubscription = this.searchService.noSearchChange.subscribe((value: boolean) => {
-        this.noSearch = value
+        this.noSearch = value;
     });
 
     this._searchingSubscription = this.searchService.searchingChange.subscribe((value: boolean) => {
-        this.searching = value
+        this.searching = value;
     });
 
     this._resultHasSubscription = this.searchService.hasResultChange.subscribe((value: boolean) => {
-        this.hasResult = value
+        this.hasResult = value;
+    });
+
+    this._searchResultsSubscription = this.searchService.searchResultsChange.subscribe((value: Result[]) => {
+        this.searchResults = value;
+        console.log("searchResults changed");
+        console.log(this.searchResults);
     });
   }
 
