@@ -9,6 +9,7 @@ import OlView from 'ol/View';
 // @ts-ignore
 import { fromLonLat } from 'ol/proj';
 import { MapService } from '../map.service';
+import { addCommon as addCommonProjections } from 'ol/proj.js';
 
 @Component({
   selector: 'app-map-container',
@@ -37,6 +38,10 @@ export class MapContainerComponent implements OnInit {
    * Creates a openlayers map with two layers (basemaps)
    */
   initMap() {
+    // Need to add this before initializing the map to have functional prod build
+    // https://github.com/openlayers/openlayers/issues/9019
+    addCommonProjections();
+
     let sourceDefault = new OlOSM({
       url: 'http://tile.osm.org/{z}/{x}/{y}.png'
     });
